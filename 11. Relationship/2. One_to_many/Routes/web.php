@@ -29,6 +29,9 @@ Route::get('/create',function(){
 });
 
 Route::get('/read',function(){
+    // It will give all referenced data
+    // $user = User::with('posts')->get();
+    
     $user = User::findOrFail(1);
     foreach($user->posts as $post){
         echo $post->title."<br>";
