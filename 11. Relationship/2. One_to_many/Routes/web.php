@@ -31,6 +31,8 @@ Route::get('/create',function(){
 Route::get('/read',function(){
     // It will give all referenced data
     // $user = User::with('posts')->get();
+    // It will give One referenced data
+    // $user = User::with('posts')->find(1);
     
     $user = User::findOrFail(1);
     foreach($user->posts as $post){
