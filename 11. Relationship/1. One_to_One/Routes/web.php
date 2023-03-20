@@ -37,6 +37,10 @@ Route::get('/update',function(){
 Route::get('/read',function(){
     $user = User::findOrFail(1);
     echo $user->address->name;
+    
+    // It will give all referenced data
+    $user = User::with('address')->get();
+    echo $user;
 });
 Route::get('/delete',function(){
     $user = User::findOrFail(1);
