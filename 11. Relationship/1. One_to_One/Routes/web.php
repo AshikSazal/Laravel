@@ -40,6 +40,8 @@ Route::get('/read',function(){
     
     // It will give all referenced data
     $user = User::with('address')->get();
+    // It will give one referenced data
+    $user = User::with('address')->find(1);
     echo $user;
 });
 Route::get('/delete',function(){
