@@ -12,6 +12,13 @@ class RegisterController extends Controller
     public function register(Request $req, $modelName)
     {
         $model = "App\\Models\\" . ucfirst($modelName);
+        if(!$req->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:',
+            'password' => 'required|string|min:6',
+        ])){
+            return response(['message'=>$req->message, "errors"=>$req->errors], 400);
+        }
         // $data = $request->all();
         // $model::create($data);
         try {
