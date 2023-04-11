@@ -14,7 +14,7 @@ class RegisterController extends Controller
         $model = "App\\Models\\" . ucfirst($modelName);
         if(!$req->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:',
+            'email' => 'required|email|unique:'.mb_strtolower($modelName) . 's|max:255',
             'password' => 'required|string|min:6',
         ])){
             return response(['message'=>$req->message, "errors"=>$req->errors], 400);
